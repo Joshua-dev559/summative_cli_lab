@@ -12,6 +12,7 @@ def handle_add_user(args):
         display.error(f"A user with email '{args.email}'  already exists.")
         sys.exit(1)
     user = User(name=args.name, email=args.email)
+    users.append(user)
     storage.save_users(users)
     display.success(f"User '{user.name}' created with ID {user.id}.")
     
@@ -21,7 +22,7 @@ def handle_list_users(args):
     
 def handle_add_project(args):
     users, projects, _ = storage.load_all()
-    owner = next((u for u in users if u.id == args.owner_id), None)
+    owner = next((u for u in users if u.id == args.user_id), None)
     if not owner:
         display.error(f"No user found with ID {args.user_id}.")
         sys.exit(1)
@@ -78,7 +79,7 @@ def handle_complete_task(args):
     if not task:
         display.error(f"No task found with ID {args.task_id}.")
         sys.exit(1)
-    if task.status == "completed":
+    if task.status == "Completed":
         display.error(f"Task '{task.title}' is already completed.")
         sys.exit(1)
     task.completed()
@@ -87,13 +88,14 @@ def handle_complete_task(args):
 
 
 def handle_update_task_status(args):
+    STATUS_MAP = {"pending": "Pending", "in-progress": "In Progress", "completed": "Completed"}
     tasks = storage.load_tasks()
     task = next((t for t in tasks if t.id == args.task_id), None)
     if not task:
         display.error(f"No task found with ID {args.task_id}.")
         sys.exit(1)
     try:
-        task.status = args.status
+        task.status = STATUS_MAP[args.status]
     except ValueError as e:
         display.error(str(e))
         sys.exit(1)

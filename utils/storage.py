@@ -5,7 +5,7 @@ from models.user import User
 from models.project import Project
 from models.task import Task
 
-DATA_DIR = os.path.join(os.path.dirname(__file__),'..' 'data')
+DATA_DIR = os.path.join(os.path.dirname(__file__),'..', 'data')
 USERS_FILE = os.path.join(DATA_DIR, 'users.json')
 PROJECTS_FILE = os.path.join(DATA_DIR, 'projects.json')
 TASKS_FILE = os.path.join(DATA_DIR, 'tasks.json')
@@ -46,11 +46,7 @@ def save_tasks(tasks: list):
     _write_json(TASKS_FILE, [task.to_dict() for task in tasks])
     
 def load_all():
-    return {
-        'users': load_users(),
-        'projects': load_projects(),
-        'tasks': load_tasks()
-    }
+    return load_users(), load_projects(), load_tasks()
 
     proj_map = {p.id: p for p in projects}
     for task in tasks:

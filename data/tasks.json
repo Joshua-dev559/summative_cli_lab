@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Design mockups",
+    "assigned_to": "Alice",
+    "status": "Completed",
+    "project_id": 1
+  },
+  {
+    "id": 2,
+    "title": "Build components",
+    "assigned_to": "Bob",
+    "status": "Completed",
+    "project_id": 1
+  },
+  {
+    "id": 3,
+    "title": "Design mockups",
+    "assigned_to": "Alice",
+    "status": "Pending",
+    "project_id": 1
+  },
+  {
+    "id": 4,
+    "title": "Build components",
+    "assigned_to": "Bob",
+    "status": "Pending",
+    "project_id": 1
+  }
+]

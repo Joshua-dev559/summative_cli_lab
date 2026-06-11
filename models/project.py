@@ -4,7 +4,7 @@ class Project:
     
     _id_counter = 1
     
-    def __init__(self, title: str, description: str, due_date: str = None, owner_id: int = None, project_id: int = None):
+    def __init__(self, title: str, description: str = "", due_date: str = None, owner_id: int = None, project_id: int = None):
         if project_id is not None:
             self.id = project_id
             Project._id_counter = max(Project._id_counter, project_id + 1)

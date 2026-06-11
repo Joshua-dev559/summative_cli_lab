@@ -4,7 +4,7 @@ class Task:
     
     _id_counter = 1
     
-    def __init__(self, title: str, description: str, assigned_to: str = "", status: str = "Pending", task_id: int = None, project_id: int = None):
+    def __init__(self, title: str, assigned_to: str = "", status: str = "Pending", task_id: int = None, project_id: int = None):
         if task_id is not None:
             self.id = task_id
             Task._id_counter = max(Task._id_counter, task_id + 1)

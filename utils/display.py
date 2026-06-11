@@ -23,12 +23,11 @@ def print_users(users):
 
     console.print(table)
     
-def print_projects(
-projects):
+def print_projects(projects, title="Projects"):
     if not projects:
         console.print("[bold red]No projects found.[/bold red]")
         return
-    table = Table(title="Projects")
+    table = Table(title=title)
     table.add_column("ID", style="cyan", no_wrap=True)
     table.add_column("Title", style="magenta")
     table.add_column("Description", style="green")
@@ -46,16 +45,15 @@ projects):
 
     console.print(table)
     
-def print_tasks(
-tasks):
+def print_tasks(tasks, title="Tasks"):
     if not tasks:
         console.print("[bold red]No tasks found.[/bold red]")
         return
     
-    table = Table(title="Tasks")
+    table = Table(title=title)
     table.add_column("ID", style="cyan", no_wrap=True)
     table.add_column("Title", style="magenta")
-    table.add_column("Description", style="green")
+    table.add_column("Assigned To", style="green")
     table.add_column("Project ID", style="yellow")
     table.add_column("Status", style="blue")
 
@@ -63,7 +61,7 @@ tasks):
         table.add_row(
             str(task.id),
             task.title,
-            task.description,
+            task.assigned_to,
             str(task.project_id) if task.project_id else "None",
             task.status
         )
